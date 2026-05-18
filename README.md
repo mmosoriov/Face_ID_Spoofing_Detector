@@ -2,8 +2,8 @@
 
 ## Project Overview
 
-* **Situation:** Facial recognition systems like Face ID need a guardrail against video replays where an attacker holds up a digital screen playing a recording of the authorized user.
-* **Task:** Build a robust Convolutional Neural Network (CNN) model capable of successfully distinguishing between real human faces and video replay spoof attacks.
+* **Situation:** Facial recognition systems like Face ID need a guardrail against video replays where an attacker holds up a digital screen playing a recording of the user.
+* **Task:** Build a Convolutional Neural Network (CNN) model capable of distinguishing between real human faces and video replay spoof attacks.
 * **Action:** Compiled a custom dataset using 10+ 20-second video recordings of my face from various angles, representing both "real" captures and "spoof" (video replay) scenarios.The faces were extracted and normalized to 224x224 pixels using **MediaPipe's BlazeFace Short Range** model. For the core classifier, I adapted and fine-tuned a pre-trained **InceptionResnetV1** model (via `facenet-pytorch`, originally trained on VGGFace2). Training in PyTorch involved a two-stage approach: initially freezing the backbone to train a custom binary classification head, followed by unfreezing the final convolutional blocks to fine-tune the model to detect subtle screen artifacts.
 
 ## Usage
