@@ -1,10 +1,21 @@
 # Face ID Spoofing Detector
 
+![Intro](intro.png)
+
 ## Project Overview
 
 * **Situation:** Facial recognition systems like Face ID need a guardrail against video replays where an attacker holds up a digital screen playing a recording of the user.
 * **Task:** Build a Convolutional Neural Network (CNN) model capable of distinguishing between real human faces and video replay spoof attacks.
 * **Action:** Compiled a custom dataset using 10+ 20-second video recordings of my face from various angles, representing both "real" captures and "spoof" (video replay) scenarios.The faces were extracted and normalized to 224x224 pixels using **MediaPipe's BlazeFace Short Range** model. For the core classifier, I adapted and fine-tuned a pre-trained **InceptionResnetV1** model (via `facenet-pytorch`, originally trained on VGGFace2). Training in PyTorch involved a two-stage approach: initially freezing the backbone to train a custom binary classification head, followed by unfreezing the final convolutional blocks to fine-tune the model to detect subtle screen artifacts.
+
+### Dataset Collection
+I manually recorded the dataset. The "real" data consists of direct facial captures, while the "spoof" data was engineered by playing those recordings on a secondary screen and recording the playback. 
+
+<div align="center">
+  <img src="spoof_recording.png" alt="Recording the Spoof Dataset" width="600"/>
+  <br>
+  <em>Demonstrating the setup used to capture simulated video replay spoof attacks.</em>
+</div>
 
 ## Usage
 
